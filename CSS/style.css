@@ -1,0 +1,190 @@
+*{
+  
+  padding: 0;
+  margin: 0;
+}
+body{
+  background-color:#ece49a
+}
+
+.header {
+  background-color: #2a445f;
+  padding: 20px;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
+  position:sticky;
+  font-family: "Playfair Display", serif;
+}
+  
+  
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box; 
+}
+  
+ 
+.header__nav__nombreEmpresa {
+  font-size: 60px;
+  font-weight: bold;
+  color: #ecf0f1;
+  margin-left: 50px;
+   
+}
+.header__nav__nombreEmpresa:hover{
+  color: #1abc9c;
+}
+ 
+.header__nav__ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  align-items: center; 
+  cursor: pointer;
+}
+  
+.header__nav__ul li a {
+  text-decoration: none;
+  color: #ecf0f1;
+  transition: color 0.3s ;
+  font-size: 20px;
+}
+  
+.header__nav__ul li a:hover {
+  color: #3498db;
+}
+  
+  
+.header__nav__ul li:hover a {
+  color: #1abc9c;
+}
+  
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  line-height: 1.8;
+
+}
+.main__nombreEmpresa{
+  font-size:130px;
+  margin: auto;
+  margin-bottom: 80px;
+  font-family: "Playfair Display", serif;
+  
+}
+.main__nombreEmpresa:hover{
+  transform: scale(1.3);
+  transition: 1.5s;
+}
+.main__quienesSomos{
+  text-align: center;
+  margin-bottom: 100px;
+ }
+
+.main__quienesSomos__titulo{
+  font-size: 40px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.main__quienesSomos__parrafo{
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.main__nuestrosServicios{
+  text-align: center;
+  margin: auto;
+  margin-bottom: 100px;
+
+}
+.main__nuestrosServicios__titulo{
+  font-size: 40px;
+}
+.main__nuestrosServicios__lista{
+  font-size: 25px;
+  margin-bottom: 20px;
+  list-style-position: inside;
+  text-align: left
+}
+
+.main__mision{
+  text-align: center;
+  margin-bottom: 100px;
+}
+.main__mision__titulo{
+  font-size: 40px;
+  margin: auto;
+  margin-bottom: 20px
+}
+.main__mision__parrafo{
+  font-size: 25px;
+  margin-bottom: 100px
+}
+.main__vision__titulo{
+  font-size: 40px;
+  margin: auto;
+  margin-bottom: 20px
+}
+.main__vision__parrafo{
+  font-size: 25px;
+  margin-bottom: 20px
+}
+
+
+
+@media (max-width: 767px) {
+  .header__nav__nombreEmpresa {
+    font-size: 40px;
+  }
+  .header__nav__ul {
+    flex-direction: column;
+  }
+  .header__nav__ul li {
+    margin-bottom: 10px;
+  }
+  .main__nombreEmpresa {
+    font-size: 80px;
+  }
+  .main__quienesSomos__titulo, 
+  .main__nuestrosServicios__titulo, 
+  .main__mision__titulo, 
+  .main__vision__titulo {
+    font-size: 30px;
+  }
+  .main__quienesSomos__parrafo, 
+  .main__nuestrosServicios__lista, 
+  .main__mision__parrafo, 
+  .main__vision__parrafo {
+    font-size: 18px;
+  }
+}
+
+/* Estilos para tablets (entre 768px y 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .header__nav__nombreEmpresa {
+    font-size: 50px;
+  }
+  .main__nombreEmpresa {
+    font-size: 100px;
+  }
+  .main__quienesSomos__titulo, 
+  .main__nuestrosServicios__titulo, 
+  .main__mision__titulo, 
+  .main__vision__titulo {
+    font-size: 35px;
+  }
+  .main__quienesSomos__parrafo, 
+  .main__nuestrosServicios__lista, 
+  .main__mision__parrafo, 
+  .main__vision__parrafo {
+    font-size: 20px;
+  }
+}
