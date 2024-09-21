@@ -1,15 +1,15 @@
-let saludoNombre=''
-let montoSolicitar=''
+/* let saludoNombre='' */
+let montoSolicitar=querySelector("#importe")
 let salario=''
 
 
-while(saludoNombre===''){
+/* while(saludoNombre===''){
     saludoNombre=prompt(`Por favor ingresa su nombre`)
     if(saludoNombre===''){
         alert('Por favor ingrese un nombre para comenzar')
     }
 }
-
+ */
 while(montoSolicitar===''){
 
     montoSolicitar=prompt(`Bienvenido ${saludoNombre} entraste a tu gestor de prestamos, por favor ingrese el monto del credito a solicitar:`)
