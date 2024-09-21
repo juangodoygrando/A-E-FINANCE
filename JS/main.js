@@ -108,7 +108,153 @@ while(cuotas ===''||cuotas<3||cuotas>48|| isNaN(cuotas)){
 }
 
 
-function prestamo(){
+function calcularInteres (interesA,interesB,interesC,cuotas){
+    if(cuotas<=6){
+            return interesA
+        }else if(cuotas>=7&&cuotas<=24){
+            return interesB
+        }else if (cuotas>=24&&cuotas<=48){
+            return interesC
+        }
+}
+
+function interesPrestamo(motivo,cuotas){
+    switch(motivo){
+        case 'a':
+            return calcularInteres(1.10,1.15,1.20,cuotas);
+        case 'b':
+            return calcularInteres(1.30,1.35,1.35,cuotas);  
+        case 'c':
+            return calcularInteres(1.20,1.25,1.30,cuotas);  
+    }
+    
+}
+
+function prestamo(interesPrestamo,cuotas,montoSolicitar){
+    let interes=interesPrestamo(motivo,cuotas)
+        return(
+            `Perfecto ${saludoNombre}, tu préstamo queda de la siguiente manera:\n` +
+            `Monto a solicitar: €${montoSolicitar}\n` +
+             `Número de cuotas: ${cuotas}\n` +
+            `Total del interés a pagar: €${((montoSolicitar * interes) - montoSolicitar).toFixed(2)}\n` +
+            `Valor final de la cuota: €${((montoSolicitar * interes) / cuotas)}`
+        )
+}
+
+
+    
+
+
+
+
+
+
+
+
+
+
+/* 
+   interesPrestamo (motivo){
+        return()=>{
+            if(motivo=='a'){
+                interesA
+            }else if(motivo=='b'){
+                interesB
+            }else if(motivo=='c'){
+                interesC
+            }
+            }
+    }
+
+    function interesA (cuotas) {
+    return()=> {
+        if(cuotas<=6){
+            1.10
+        }else if(cuotas>=7&&cuotas<=24){
+            1.15
+        }else if (cuotas>=24&&cuotas<=48){
+            1.20
+        }
+    }
+    }
+    function interesB (cuotas) {
+    return()=> {
+        if(cuotas<=6){
+            1.20
+        }else if(cuotas>=7&&cuotas<=24){
+            1.25
+        }else if (cuotas>=24&&cuotas<=48){
+            1.30
+        }
+    }
+    }
+    function interesC (cuotas) {
+    return()=> {
+        if(cuotas<=6){
+            1.25
+        }else if(cuotas>=7&&cuotas<=24){
+            1.30
+        }else if (cuotas>=24&&cuotas<=48){
+            1.35
+        }
+    }
+    }
+    
+
+
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*     
+    function intereses (motivo) {
+        if(motivo=='a'){
+            return()=> 
+        }
+        
+        
+    
+        
+        
+        
+        return()=> {
+            if(cuotas<=6){
+                1.1
+            }else if(cuotas>=7&&cuotas<=24){
+                1.15
+            }else if (cuotas>=24&&cuotas<=48){
+                1.2
+            }
+        }
+    }
+
+    
+    
+}
+
+
+
+
+
+ */
+
+
+
+
+
+ 
+/* function prestamo(){
     let montoConInteres=''
     
     switch(motivo){
@@ -158,7 +304,7 @@ function prestamo(){
 }
 
 prestamo()
-
+ */
 
 
 
