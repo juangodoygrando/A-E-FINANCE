@@ -29,17 +29,17 @@
              
               <div class="">
                 <label for="importe">Importe del Préstamo:</label>
-                <input type="number" id="importe" name="importe" placeholder="Ingrese el importe" required>
+                <input  type="number" id="importe" name="importe" placeholder="Ingrese el importe" required min="500" max="15000">
               </div>
               
             
               <div class="form-group">
                 <label for="motivo">Motivo del Préstamo:</label>
                 <select id="motivo" name="motivo" required>
-                  <option value="" disabled selected>Seleccione un motivo</option>
-                  <option value="consumo">Prestamo Personal</option>
-                  <option value="educacion">Comprar coche nuevo</option>
-                  <option value="inversion">Reformas en el hogar</option>
+                  <option id="motivos__prestamo" disabled selected>Seleccione un motivo</option>
+                  <option value="motivo__prestamo__personal">Prestamo Personal</option>
+                  <option value="motivo__compra__coche">Comprar coche nuevo</option>
+                  <option value="motivo__reformas__hogar">Reformas en el hogar</option>
                 </select>
               </div>
         
@@ -50,13 +50,19 @@
               </div>
         
               
-              <button type="submit">Calcular</button>
+              <button id="botonCalcular" type="button">Calcular</button>
             </form>
           </div>
-        
           
-          <script src="script.js"></script>
+      <div id="resultado"></div>
+
+          
+    
     </main>
-    <script src=""></script> 
+    <script src="../js/main.js"></script> 
 </body>
 </html>
+
+
+
+

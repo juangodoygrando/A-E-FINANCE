@@ -1,7 +1,112 @@
-/* let saludoNombre='' */
-let montoSolicitar=querySelector("#importe")
-let salario=''
+let montoSolicitar 
+let motivo 
+let cuotas 
 
+let botonCalcular = document.querySelector("#botonCalcular");
+let resultadoPrestamo = document.querySelector("#resultado");
+
+botonCalcular.addEventListener("click", function (e) {
+  e.preventDefault()
+
+  montoSolicitar = Number(document.querySelector("#importe").value);
+
+  motivo = document.querySelector("#motivo").value;
+
+  cuotas = Number(document.querySelector("#cuotas").value);
+
+  prestamo();
+});
+
+function calcularInteres(
+  motivo__prestamo__personal,
+  motivo__compra__coche,
+  motivo__reformas__hogar,
+  cuotas
+) {
+  if (cuotas <= 6) {
+    return motivo__prestamo__personal;
+  } else if (cuotas >= 7 && cuotas <= 24) {
+    return motivo__compra__coche;
+  } else if (cuotas >= 24 && cuotas <= 48) {
+    return motivo__reformas__hogar;
+  }
+}
+
+function interesPrestamo(motivo, cuotas) {
+  switch (motivo) {
+    case "motivo__prestamo__personal":
+      return calcularInteres(1.1, 1.15, 1.2, cuotas);
+    case "motivo__compra__coche":
+      return calcularInteres(1.3, 1.35, 1.35, cuotas);
+    case "motivo__reformas__hogar":
+      return calcularInteres(1.2, 1.25, 1.3, cuotas);
+  }
+}
+
+function prestamo() {
+  let interes = interesPrestamo(motivo, cuotas)
+let resultado =
+    
+`<h1>Los resultados para tu prestamo son:</h1>
+   <ul>
+    <li class="montoSolicitado">Monto a solicitar:<strong>€${montoSolicitar}</strong></li>
+    <li class="numeroCuotas">Número de cuotas:<strong>${cuotas}</strong></li>
+    <li class="totalConInteres">Total del interés a pagar:<strong>€${(
+        montoSolicitar * interes -
+        montoSolicitar
+      ).toFixed(2)}</strong></li>
+    <li class="valorFinalCuota">Valor final de la cuota:<strong>€${(montoSolicitar * interes) / cuotas}</strong></li>
+</ul>`
+
+resultadoPrestamo.innerHTML =resultado
+
+}
+
+
+
+
+
+
+
+
+
+/* 
+let calcularPrestamo(montoSolicitar,motivo,cuotas)=>{
+    return(prestamoFinal)
+}
+ */
+
+
+
+/* `Perfecto ${saludoNombre}, tu préstamo queda de la siguiente manera:\n` +
+    `Monto a solicitar: €${montoSolicitar}\n` +
+    `Número de cuotas: ${cuotas}\n` +
+    `Total del interés a pagar: €${(
+      montoSolicitar * interes -
+      montoSolicitar
+    ).toFixed(2)}\n` +
+    `Valor final de la cuota: €${(montoSolicitar * interes) / cuotas}`
+  ); */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* let saludoNombre='' 
 
 /* while(saludoNombre===''){
     saludoNombre=prompt(`Por favor ingresa su nombre`)
@@ -9,7 +114,11 @@ let salario=''
         alert('Por favor ingrese un nombre para comenzar')
     }
 }
- */
+
+
+
+
+
 while(montoSolicitar===''){
 
     montoSolicitar=prompt(`Bienvenido ${saludoNombre} entraste a tu gestor de prestamos, por favor ingrese el monto del credito a solicitar:`)
@@ -146,12 +255,7 @@ function prestamo(interesPrestamo,cuotas,montoSolicitar){
 
 
 
-
-
-
-
-
-
+ */
 
 /* 
    interesPrestamo (motivo){
@@ -205,18 +309,6 @@ function prestamo(interesPrestamo,cuotas,montoSolicitar){
 
  */
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*     
     function intereses (motivo) {
         if(motivo=='a'){
@@ -249,11 +341,6 @@ function prestamo(interesPrestamo,cuotas,montoSolicitar){
 
  */
 
-
-
-
-
- 
 /* function prestamo(){
     let montoConInteres=''
     
@@ -305,18 +392,3 @@ function prestamo(interesPrestamo,cuotas,montoSolicitar){
 
 prestamo()
  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
