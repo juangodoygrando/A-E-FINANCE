@@ -82,7 +82,7 @@ function crearNuevoPrestamo(){
                 break;
         }
         if(!continuar){
-        montoSolicitar='';
+        montoSolicitar=''
         }
         } 
     }   
