@@ -190,15 +190,19 @@ function mostrarHistorialPrestamos(){
                 `Pago Mensual: €${Math.round(prestamo.pagoMensual)}\n\n`
         });
         alert(historial)
-}
+}    
 
-
-
-function calculadorPrestamo(){
+function opcionMenu(){
     let continuar= true
-    while(continuar){
-        let datosPrestamo = crearNuevoPrestamo()
 
+    while(continuar){
+        
+        if(prestamos.length===0||saludoNombre===''){
+
+        saludoNombre = ''
+        
+        let datosPrestamo=crearNuevoPrestamo()
+        
         let nuevaPersona = new persona(
             datosPrestamo.saludoNombre,
             datosPrestamo.montoSolicitar,
@@ -206,35 +210,43 @@ function calculadorPrestamo(){
             datosPrestamo.cuotas,
             datosPrestamo.montoConInteres,
             datosPrestamo.pagoEnCuotas
-        );
-
+        )
         guardarPersonaEnArray(nuevaPersona)
-
-        let nuevoCalculo = prompt(
-            '¿Deseas calcular un nuevo prestamo?' + '\n' + 'A) Calcular nuevo prestamo' + '\n' + 'B) Salir'+ '\n' +'C) Ver historial de prestamos'
-        ).toLowerCase();
-
-        if (nuevoCalculo === 'c') {
-            mostrarHistorialPrestamos()
-        } else if (nuevoCalculo === 'b') {
-            continuar = false;
-            alert('Gracias por usar el simulador de préstamos.')
-        }
-
-        saludoNombre = ''
-        montoSolicitar=''
+    }
         
-    
+        let nuevoCalculo = prompt(
+            '¿Deseas calcular un nuevo prestamo?' + '\n' + 
+            'A) Calcular nuevo prestamo' + '\n' + 
+            'B) Ver historial de prestamos'+ '\n' +
+            'C) Salir'
+        ).toLowerCase()
+
+
+        switch(nuevoCalculo){
+
+            case 'a':{
+                saludoNombre = ''
+                break
+            }    
+            case  'b':  
+                mostrarHistorialPrestamos();
+                break
+            case 'c':
+                alert('Gracias por usar el simulador de prestamos')
+                continuar= false
+                break
+            default:
+                alert('Por favor ingresa una opcion valida')
+
+
+
+            }
+    }
+
 }
-}
 
 
-calculadorPrestamo()
-    
-
-
-
-
+opcionMenu()
 
 
 
