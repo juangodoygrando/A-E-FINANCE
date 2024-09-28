@@ -137,8 +137,12 @@ main {
   font-size: 25px;
   margin-bottom: 20px
 }
-
-
+ /* sacar las flechas de importe de prestamos y de cuotas  */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
 
 @media (max-width: 767px) {
   .header__nav__nombreEmpresa {
@@ -167,7 +171,7 @@ main {
   }
 }
 
-/* Estilos para tablets (entre 768px y 1024px) */
+
 @media (min-width: 768px) and (max-width: 1024px) {
   .header__nav__nombreEmpresa {
     font-size: 50px;
