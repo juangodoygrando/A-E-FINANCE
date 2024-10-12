@@ -1,0 +1,71 @@
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    line-height: 1.8;
+  
+  }
+  .main__nombreEmpresa{
+    font-size:130px;
+    margin: auto;
+    margin-bottom: 80px;
+    font-family: "Playfair Display", serif;
+    
+  }
+  
+  .main__quienesSomos{
+    text-align: center;
+    margin-bottom: 100px;
+   }
+  
+  .main__quienesSomos__titulo{
+    font-size: 40px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  .main__quienesSomos__parrafo{
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+  
+  .main__nuestrosServicios{
+    text-align: center;
+    margin: auto;
+    margin-bottom: 100px;
+  
+  }
+  .main__nuestrosServicios__titulo{
+    font-size: 40px;
+  }
+  .main__nuestrosServicios__lista{
+    font-size: 25px;
+    margin-bottom: 20px;
+    list-style-position: inside;
+    text-align: left
+  }
+  
+  .main__mision{
+    text-align: center;
+    margin-bottom: 100px;
+  }
+  .main__mision__titulo{
+    font-size: 40px;
+    margin: auto;
+    margin-bottom: 20px
+  }
+  .main__mision__parrafo{
+    font-size: 25px;
+    margin-bottom: 100px
+  }
+  .main__vision__titulo{
+    font-size: 40px;
+    margin: auto;
+    margin-bottom: 20px
+  }
+  .main__vision__parrafo{
+    font-size: 25px;
+    margin-bottom: 20px
+  }
+  

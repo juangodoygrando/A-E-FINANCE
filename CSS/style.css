@@ -1,20 +1,24 @@
+:root{
+  --color-principal:#6886A6
+}
+
 *{
-  
+  font-family: "Playfair Display", serif;
   padding: 0;
   margin: 0;
 }
 body{
-  background-color:#ece49a
+  background-color:var(--color-principal)
 }
 
 .header {
-  background-color: #2a445f;
+  
   padding: 20px;
   color: white;
   width: 100%;
   box-sizing: border-box;
   position:sticky;
-  font-family: "Playfair Display", serif;
+  
 }
   
   
@@ -30,12 +34,9 @@ body{
 .header__nav__nombreEmpresa {
   font-size: 60px;
   font-weight: bold;
-  color: #ecf0f1;
+  color: white;
   margin-left: 50px;
    
-}
-.header__nav__nombreEmpresa:hover{
-  color: #1abc9c;
 }
  
 .header__nav__ul {
@@ -50,145 +51,50 @@ body{
   
 .header__nav__ul li a {
   text-decoration: none;
-  color: #ecf0f1;
+  color: white;
   transition: color 0.3s ;
   font-size: 20px;
 }
-  
-.header__nav__ul li a:hover {
-  color: #3498db;
+
+
+.bienvenida {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  flex-wrap: wrap; 
 }
-  
-  
-.header__nav__ul li:hover a {
-  color: #1abc9c;
-}
-  
-main {
+
+.containers {
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  max-width: 1200px;
-  margin: 0 auto;
-  line-height: 1.8;
-
-}
-.main__nombreEmpresa{
-  font-size:130px;
-  margin: auto;
-  margin-bottom: 80px;
-  font-family: "Playfair Display", serif;
-  
-}
-.main__nombreEmpresa:hover{
-  transform: scale(1.3);
-  transition: 1.5s;
-}
-.main__quienesSomos{
-  text-align: center;
-  margin-bottom: 100px;
- }
-
-.main__quienesSomos__titulo{
-  font-size: 40px;
-  margin: auto;
-  margin-bottom: 20px;
-}
-.main__quienesSomos__parrafo{
-  font-size: 25px;
-  margin-bottom: 20px;
+  flex: 1;
+  margin-right: 20px;
 }
 
-.main__nuestrosServicios{
-  text-align: center;
-  margin: auto;
-  margin-bottom: 100px;
-
-}
-.main__nuestrosServicios__titulo{
-  font-size: 40px;
-}
-.main__nuestrosServicios__lista{
-  font-size: 25px;
-  margin-bottom: 20px;
-  list-style-position: inside;
-  text-align: left
+.texto-bienvenida {
+  font-size: 2.5rem;
+  margin-bottom: 10px; 
 }
 
-.main__mision{
-  text-align: center;
-  margin-bottom: 100px;
-}
-.main__mision__titulo{
-  font-size: 40px;
-  margin: auto;
-  margin-bottom: 20px
-}
-.main__mision__parrafo{
-  font-size: 25px;
-  margin-bottom: 100px
-}
-.main__vision__titulo{
-  font-size: 40px;
-  margin: auto;
-  margin-bottom: 20px
-}
-.main__vision__parrafo{
-  font-size: 25px;
-  margin-bottom: 20px
-}
- /* sacar las flechas de importe de prestamos y de cuotas  */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-    }
-
-@media (max-width: 767px) {
-  .header__nav__nombreEmpresa {
-    font-size: 40px;
-  }
-  .header__nav__ul {
-    flex-direction: column;
-  }
-  .header__nav__ul li {
-    margin-bottom: 10px;
-  }
-  .main__nombreEmpresa {
-    font-size: 80px;
-  }
-  .main__quienesSomos__titulo, 
-  .main__nuestrosServicios__titulo, 
-  .main__mision__titulo, 
-  .main__vision__titulo {
-    font-size: 30px;
-  }
-  .main__quienesSomos__parrafo, 
-  .main__nuestrosServicios__lista, 
-  .main__mision__parrafo, 
-  .main__vision__parrafo {
-    font-size: 18px;
-  }
+.imagen-bienvenida {
+  max-width: 55%; 
+  height: auto;   
 }
 
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; 
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  .header__nav__nombreEmpresa {
-    font-size: 50px;
-  }
-  .main__nombreEmpresa {
-    font-size: 100px;
-  }
-  .main__quienesSomos__titulo, 
-  .main__nuestrosServicios__titulo, 
-  .main__mision__titulo, 
-  .main__vision__titulo {
-    font-size: 35px;
-  }
-  .main__quienesSomos__parrafo, 
-  .main__nuestrosServicios__lista, 
-  .main__mision__parrafo, 
-  .main__vision__parrafo {
-    font-size: 20px;
-  }
+.boton {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
 }

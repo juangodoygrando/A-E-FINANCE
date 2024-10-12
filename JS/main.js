@@ -1,22 +1,102 @@
-let saludoNombre=''
-let montoSolicitar=''
-let prestamos=[]
 
 
-function calcularIntereses(montoSolicitar,motivo,cuotas){
-    let montoConInteres=''
-    switch(motivo){
         
-        case 'a' : 
+class Prestamo {
+    constructor(id,nombreUsuarioPrestamo,montoSolicitar,motivoPrestamo,cuotas,totalConIntereses,cuotaConInteres){
+        
+        this.nombre=nombreUsuarioPrestamo
+        this.montoSolicitar=montoSolicitar
+        this.motivo=motivoPrestamo;
+        this.cuotas=cuotas
+        this.totalConIntereses=totalConIntereses
+        this.cuotaConInteres=cuotaConInteres
+    }
+    mostrarPrestamo(){
+        return {
+            
+            nombre: this.nombre,
+            montoSolicitar: this.montoSolicitar,
+            motivo: this.motivo,
+            cuotas: this.cuotas,
+            totalConIntereses: this.totalConIntereses,
+            cuotaConInteres: this.cuotaConInteres,
+        };
+    }
+}
+
+let contadorPrestamo = 1
+
+let prestamos =JSON.parse(localStorage.getItem("Prestamos"))?.map(t=> new Prestamo(t.nombre,t.montoSolicitar,t.motivoPrestamo,t.cuotas,t.totalConIntereses,t.cuotaConInteres)) || []
+
+function actualizarPrestamos(){
+    localStorage.setItem("Prestamos",JSON.stringify(prestamos))
+}
+
+
+const validarDatos = document.getElementById('formularioPrestamo')
+
+validarDatos.addEventListener('submit',(e)=>{
+    e.preventDefault()
+
+    const usuarioValido=validarUsuario()
+    const importeValido=validarImporte()
+
+    if(usuarioValido&&importeValido){
+        nuevoPrestamo()
+    }
+
+})
+
+function validarUsuario(){
+    const nombreUsuarioPrestamo=document.getElementById('usuario').value
+    const usuarioIncorrecto=document.getElementById('datoUsuarioIncorrecto')
+
+    if(nombreUsuarioPrestamo===''||!isNaN(nombreUsuarioPrestamo)){
+        usuarioIncorrecto.innerHTML ='El campo de nombre no puede estar vacio o ser numerico'
+        document.getElementById('usuario').value = ''
+    }else{
+        usuarioIncorrecto.innerHTML = ''
+    }
+
+    return nombreUsuarioPrestamo
+}
+
+function validarImporte(){
+    const montoSolicitar=parseFloat(document.getElementById('importePrestamo').value)
+    const importeIncorrecto=document.getElementById('datoImporteIncorrecto')
+    
+
+    
+    
+    if(isNaN(montoSolicitar)|| montoSolicitar<=(599) || montoSolicitar>30000) {
+        importeIncorrecto.innerHTML ='El ingreso debe ser un numero valido'
+        document.getElementById('importePrestamo').value=''
+    }else{
+        importeIncorrecto.innerHTML = ''
+    }
+    return montoSolicitar
+}
+
+
+
+const motivoPrestamo=document.getElementById('motivo')
+const cuotas=document.getElementById('cuotas')
+
+
+function calcularImporteConIntereses(montoSolicitar,motivoPrestamo,cuotas){
+    let montoConInteres=0
+    switch(motivoPrestamo){
+        
+        case 'Prestamo Personal' : 
             if(cuotas<=6){
-                montoConInteres=montoSolicitar * 1.050
+                montoConInteres=montoSolicitar * 1.05
             }else if (cuotas>=7&&cuotas<=24){
-                montoConInteres=montoSolicitar * 1.060
+                montoConInteres=montoSolicitar * 1.1
             }else{
-                montoConInteres=montoSolicitar * 1.090
+                montoConInteres=montoSolicitar * 1.15
             }
             break;    
-        case 'b' : 
+        case 'Prestamo Coche' : 
             if(cuotas<=6){
                 montoConInteres=montoSolicitar * 1.065
             }else if (cuotas>=7&&cuotas<=24){
@@ -25,7 +105,7 @@ function calcularIntereses(montoSolicitar,motivo,cuotas){
                 montoConInteres=montoSolicitar * 1.105
             }
             break;
-        case 'c' : 
+        case 'Prestamo para reformas' : 
             if(cuotas<=6){
                 montoConInteres=montoSolicitar * 1.050
             }else if (cuotas>=7&&cuotas<=24){
@@ -34,219 +114,118 @@ function calcularIntereses(montoSolicitar,motivo,cuotas){
                 montoConInteres=montoSolicitar * 1.1
             }
             break;
+        default:
+            break;
     
     
     }return montoConInteres
 } 
 
 
+function calcularCuotaConInteres(montoConInteres,cuotas){
 
-function crearNuevoPrestamo(){
-
-    while(saludoNombre===''){
-        saludoNombre=prompt(`Por favor ingresa su nombre`)
+    pagoMensual=montoConInteres/cuotas
     
-        if(saludoNombre===''){
-        alert('Por favor ingrese un nombre para comenzar')
-        }
-    }   
+    return pagoMensual
+}
 
-    while(montoSolicitar===''){
+function eliminarPrestamosGuardados(){
+    localStorage.removeItem("Prestamos")
+    prestamos=[]
+    contadorPrestamo= 1
 
-        montoSolicitar=prompt(`Bienvenido ${saludoNombre} entraste a tu simulador de prestamos, por favor ingrese el monto del credito a solicitar:`)
+    
+}
+const borrarPrestamos = document.getElementById('botonBorrarPrestamos')
 
-        montoSolicitar = Number(montoSolicitar)
-   
+borrarPrestamos.addEventListener('click',(e)=>{
+    e.preventDefault()
+    eliminarPrestamosGuardados()
+    document.getElementById('resultado').innerHTML = ''
+}) 
 
-        if(montoSolicitar===''){
-        alert('El campo esta vacio. Por favor ingrese el monto del credito a solicitar')
 
-        }else{
+
+function nuevoPrestamo() {
+    const nombreUsuarioPrestamo = validarUsuario()
+    const montoSolicitar = validarImporte()
+    const motivoPrestamo = document.getElementById('motivo').value
+    const cuotas = parseInt(document.getElementById('cuotas').value)
+
+    if (nombreUsuarioPrestamo && montoSolicitar) { 
+        const montoConInteres = calcularImporteConIntereses(montoSolicitar, motivoPrestamo, cuotas)
+        const pagoMensual = calcularCuotaConInteres(montoConInteres, cuotas)
+
         
-        let continuar = true
-    
-        switch(true){
-            case (montoSolicitar>15000):
-                alert(`El maximo importe para solicitar es €15.000,00`) 
-                continuar = false
-                break;
+        let crearPrestamo = new Prestamo(contadorPrestamo++, nombreUsuarioPrestamo, montoSolicitar, motivoPrestamo, cuotas, montoConInteres, Math.round(pagoMensual))
 
-            case(montoSolicitar<=(599)):
-                alert(`El minimo para solicitar un prestamo es de €600,00`)
-                continuar = false
-                break;    
+        
+        prestamos.push(crearPrestamo)
+        actualizarPrestamos()
+
+        mostrarResultado(crearPrestamo)
+
+        document.getElementById('formularioPrestamo').reset()
+
+    }
+
+}
+
+
+function mostrarResultado(crearPrestamo){
+    document.getElementById('resultado').innerHTML = `
+            <div class="card">
+                <div class="resultadoPrestamo">
+                    <h3 class="tituloPrestamo">Estos son los resultados de tu prestamo ${crearPrestamo.nombre}</h3>
+                    <p><strong>Monto solicitado: </strong>${crearPrestamo.montoSolicitar}€</p>
+                    <p><strong>Motivo del préstamo: </strong>${crearPrestamo.motivo}</p>
+                    <p><strong>Cuotas: </strong>${crearPrestamo.cuotas}</p>
+                    <p><strong>Total con intereses: </strong>${(crearPrestamo.totalConIntereses).toFixed(2)}€</p>
+                    <p><strong>Cuota mensual: </strong>${crearPrestamo.cuotaConInteres}€</p>
+                </div>
+            </div>`
+
+}
+
+
+const botonVerPrestamos = document.getElementById('botonVerPrestamos');
+const divResultado=document.getElementById('resultado')
+
+botonVerPrestamos.addEventListener('click', () => {
+    const prestamosGuardados = JSON.parse(localStorage.getItem("Prestamos"))
+    
+    divResultado.innerHTML=''
+
+    if (prestamosGuardados && prestamosGuardados.length > 0) {
+        
+        
+
+        prestamosGuardados.forEach((Prestamo) =>{
             
-            case(isNaN(montoSolicitar)):
-                alert(`El ingreso debe ser un numero valido`)
-                continuar = false
-                break;
-        }
-        if(!continuar){
-        montoSolicitar=''
-        }
-        } 
-    }   
-
-    let motivo=''
-
-    while(motivo===''){
-
-
-        motivo=prompt('Escriba la opcion por la que solicita su prestamo'+'\n'+
-        'A)Prestamo personal'+'\n'+
-        'B)Prestamo para la compra de un coche'+'\n'+
-        'C)Prestmo para reformas en el hogar'+'\n').toLowerCase()
+           const prestamosCalculados= 
+           `<div class="card">
+                <div class="resultadoPrestamo">
+                    <h3 class="tituloPrestamo">Prestamo</h3>
+                    <p>Monto solicitado: ${Prestamo.montoSolicitar}€</p>
+                    <p>Motivo del préstamo: ${Prestamo.motivo}</p>
+                    <p>Cuotas: ${Prestamo.cuotas}</p>
+                    <p>Total con intereses: ${(Prestamo.totalConIntereses).toFixed(2)}€</p>
+                    <p>Cuota mensual: ${Prestamo.cuotaConInteres}€</p>
+                </div>
+            </div>`
         
-        if(motivo===''){
-            alert('El campo está vacío. Por favor, ingrese una opción.')
-        }else if(motivo!=='a'&&motivo!=='b'&&motivo!=='c'){
-            alert(`El ingreso debe ser una opcion valida`)
-            motivo=''
-        }
-    
-
-
+            divResultado.innerHTML+=prestamosCalculados
+        
+        })
+    } else {
+        alert('No hay préstamos guardados.')
     }
-
-    let cuotas=''
-
-    while(cuotas ===''||cuotas<3||cuotas>48|| isNaN(cuotas)){
-
-        cuotas=prompt(`Por favor ingrese la cantidad de cuotas en la que desea cancelar el prestamo:`)
-
-        cuotas=Number(cuotas)
-
-        switch(true){
-
-        case(cuotas===''||isNaN(cuotas)):
-            alert(`El ingreso debe ser un numero valido`)
-            cuotas=''
-        break;
-
-        case(cuotas>48):
-            alert(`El maximo de cuotas para cancelar su prestamos 48 cuotas`)
-            cuotas=''
-        break;
-
-        case(cuotas<3):
-            alert(`El minimo de cuotas para cancelar su prestamos 3 cuotas`)
-            cuotas=''
-        break;
-
-        default:
-            break} 
-    }
-     
-    let montoConInteres= calcularIntereses(montoSolicitar,motivo,cuotas)
-    let pagoEnCuotas= montoConInteres / cuotas
-    
-
-    alert(`Perfecto ${saludoNombre} tu prestamo segun los datos ingresados es el siguiente:
-
-         Monto Solicitado: €${montoSolicitar} 
-         Nº Cuotas: ${cuotas} 
-         Total con intereses: €${montoConInteres.toFixed(2)}
-         Cuota final a pagar: €${pagoEnCuotas.toFixed(2)} `
-    )
-    return{
-        saludoNombre,montoSolicitar,motivo,cuotas,montoConInteres,pagoEnCuotas}
-}  
- 
+});
 
 
 
 
 
-function persona(saludoNombre,montoSolicitar,motivo,cuotas,montoConInteres,pagoEnCuotas){
-        this.nombre=saludoNombre
-        this.montoPrestamo=montoSolicitar
-        
-        this.cuotas=cuotas
-        this.totalConIntereses=montoConInteres
-        this.pagoMensual=pagoEnCuotas
-
-        if(motivo==='a'){
-            this.motivo='Prestamo Personal'
-        }else if(motivo==='b'){
-            this.motivo='Prestamo para la compra de coche'
-        }else{
-            this.motivo='Préstamo para reformas en el hogar'
-        }
-}
-function guardarPersonaEnArray(persona) {
-        prestamos.push(persona)
-
-}    
-
-function mostrarHistorialPrestamos(){
-    let historial = 'Historial de Préstamos:\n\n';
-        prestamos.forEach((prestamo, index) => {
-            historial += `Préstamo ${index + 1}:\n` +
-                `Nombre: ${prestamo.nombre}\n` +
-                `Monto Solicitado: €${prestamo.montoPrestamo}\n` +
-                `Motivo: ${prestamo.motivo}\n` +
-                `Cuotas: ${prestamo.cuotas}\n` +
-                `Total con Intereses: €${Math.floor(prestamo.totalConIntereses)}\n` +
-                `Pago Mensual: €${Math.round(prestamo.pagoMensual)}\n\n`
-        });
-        alert(historial)
-}    
-
-function opcionMenu(){
-    let continuar= true
-
-    while(continuar){
-        
-        if(prestamos.length===0||saludoNombre===''){
-
-        saludoNombre = ''
-        
-        let datosPrestamo=crearNuevoPrestamo()
-        
-        let nuevaPersona = new persona(
-            datosPrestamo.saludoNombre,
-            datosPrestamo.montoSolicitar,
-            datosPrestamo.motivo,
-            datosPrestamo.cuotas,
-            datosPrestamo.montoConInteres,
-            datosPrestamo.pagoEnCuotas
-        )
-        guardarPersonaEnArray(nuevaPersona)
-    }
-        
-        let nuevoCalculo = prompt(
-            '¿Deseas calcular un nuevo prestamo?' + '\n' + 
-            'A) Calcular nuevo prestamo' + '\n' + 
-            'B) Ver historial de prestamos'+ '\n' +
-            'C) Salir'
-        ).toLowerCase()
-
-
-        switch(nuevoCalculo){
-
-            case 'a':{
-                saludoNombre = ''
-                break
-            }    
-            case  'b':  
-                mostrarHistorialPrestamos();
-                break
-            case 'c':
-                alert('Gracias por usar el simulador de prestamos')
-                continuar= false
-                break
-            default:
-                alert('Por favor ingresa una opcion valida')
-
-
-
-            }
-    }
-
-}
-
-
-opcionMenu()
 
 
 
