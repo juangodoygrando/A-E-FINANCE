@@ -1,81 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>"A&E FINANCE"</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="../CSS/prestamos.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="../CSS/prestamos.css" />
+  </head>
+  <body>
     <header class="header">
-        <nav class="header__nav">
-            <h1 class="header__nav__nombreEmpresa">A&E FINANCE</h1>
-            <ul class="header__nav__ul">
-              <li class="header__nav__ul__prestamos"><a href="../index.html">Inicio</a></li>
-              <li class="header__nav__ul__prestamos"><a href="./prestamos.html">Prestamos</a></li>
-              <li class="header__nav__ul__cambioDeDivisas"><a href="./cambioDeDivisas.html">Cambio de divisas</a></li>
-              <li class="header__nav__ul__conocenos"><a href="./conocenos.html">Conocenos</a></li>
-              <li class="header__nav__ul__contacto"><a href="./contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+      <nav class="header__nav">
+        <h1 class="header__nav__nombreEmpresa">A&E FINANCE</h1>
+
+        <ul class="header__nav__ul">
+          <li class="header__nav__ul__prestamos">
+            <a href="../index.html">Inicio</a>
+          </li>
+          <li class="header__nav__ul__prestamos">
+            <a href="./prestamos.html">Prestamos</a>
+          </li>
+          <li class="header__nav__ul__cambioDeDivisas">
+            <a href="./cambioDeDivisas.html">Cambio de divisas</a>
+          </li>
+          <li class="header__nav__ul__conocenos">
+            <a href="./conocenos.html">Conocenos</a>
+          </li>
+          <li class="header__nav__ul__contacto">
+            <a href="./contacto.html">Contacto</a>
+          </li>
+        </ul>
+      </nav>
     </header>
-    <main >
+    <main>
       <div class="simuladorPrestamos">
         <h1>Simulador de Préstamos</h1>
         <form id="formularioPrestamo">
-            <div>
-                <label for="usuario">Nombre:</label>
-                <input type="text" id="usuario" name="usuario" placeholder="Ingrese su nombre para guardar su préstamo">
-                <div id="datoUsuarioIncorrecto" class="errorUsuario"></div>
-            </div>
-            
-            <div>
-                <label for="importePrestamo">Importe del Préstamo:</label>
-                <input type="number" id="importePrestamo" name="importe" placeholder="Ingrese el importe">
-                <div id="datoImporteIncorrecto" class="errorImporte"></div>
-            </div>
-    
-            <div>
-                <label for="motivo">Motivo del Préstamo:</label>
-                <select id="motivo" name="motivo" required>
-                    <option disabled selected value="">Seleccione un motivo</option>
-                    <option value="Prestamo Personal">Préstamo Personal</option>
-                    <option value="Prestamo Coche">Comprar coche nuevo</option>
-                    <option value="Prestamo para reformas">Reformas en el hogar</option>
-                </select>
-            </div>
-    
-            <div>
-                <label for="cuotas">Cantidad de Cuotas:</label>
-                <input type="number" id="cuotas" name="cuotas" min="3" max="48" placeholder="Ingrese el número de cuotas">
+          <div>
+            <label for="usuario">Nombre:</label>
+            <input
+              type="text"
+              id="usuario"
+              name="usuario"
+              placeholder="Ingrese su nombre para guardar su préstamo"
+            />
+            <div id="datoUsuarioIncorrecto" class="errorUsuario"></div>
+          </div>
 
-            </div>
-    
-            <button id="botonCalcular" type="submit">Calcular</button>
-            <div class="botonera">
-              <button id="botonVerPrestamos" type="button">Ver prestamos calculados</button>
-              <button id="botonBorrarPrestamos" type="button">Borrar todos los prestamos guardados</button>
-            </div>
+          <div>
+            <label for="importePrestamo">Importe del Préstamo:</label>
+            <input
+              type="number"
+              id="importePrestamo"
+              name="importe"
+              placeholder="Ingrese el importe"
+            />
+            <div id="datoImporteIncorrecto" class="errorImporte"></div>
+          </div>
 
+          <div>
+            <label for="motivo">Motivo del Préstamo:</label>
+            <select id="motivo" name="motivo" required>
+              <option disabled selected value="">Seleccione un motivo</option>
+              <option value="Prestamo Personal">Préstamo Personal</option>
+              <option value="Prestamo Coche">Comprar coche nuevo</option>
+              <option value="Prestamo para reformas">
+                Reformas en el hogar
+              </option>
+            </select>
+          </div>
+
+          <div>
+            <label for="cuotas">Cantidad de Cuotas:</label>
+            <input
+              type="number"
+              id="cuotas"
+              name="cuotas"
+              min="3"
+              max="48"
+              placeholder="Ingrese el número de cuotas"
+            />
+          </div>
+
+          <button id="botonCalcular" type="submit">Calcular</button>
+          <div class="botonera">
+            <button id="botonVerPrestamos" type="button">
+              Ver prestamos calculados
+            </button>
+            <button id="botonBorrarPrestamos" type="button">
+              Borrar todos los prestamos guardados
+            </button>
+          </div>
         </form>
-    </div>
-    
-    <div id="resultado"></div>
-  
+      </div>
 
-          
-    <script src="../js/main.js"></script>
-    
+      <div id="resultado"></div>
+
+      <script src="../js/main.js"></script>
     </main>
-    
-</body>
+  </body>
 </html>
-
-
-
 
 <strong></strong>

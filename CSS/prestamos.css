@@ -16,8 +16,6 @@ h1 {
   color: #333;
 }
 
-
-
 label {
   display: block;
   font-weight: bold;
@@ -112,9 +110,60 @@ button {
 #datoImporteIncorrecto {
   color: #9B2F38;
   font-size: 1.1rem;
-  text-align: left; /* Alinear el texto a la izquierda */
-  width: 85%; /* Ajustar el ancho para que coincida con los inputs */
-  margin: -5px auto 5px; /* Espaciado superior y centrado horizontalmente */
+  text-align: left;
+  width: 85%;
+  margin: -5px auto 5px;
   display: block;
-  
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .botonera {
+    flex-direction: column;
+  }
+
+  .botonera button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #datoUsuarioIncorrecto,
+  #datoImporteIncorrecto {
+    font-size: 0.9rem;
+    margin: 0 auto;
+  }
+
+  .center-image {
+    max-width: 100%;
+  }
 }
