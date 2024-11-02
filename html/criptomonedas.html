@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>"A&E FINANCE"</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/criptomonedas.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <div class="logo-container">
+              <img
+                src="../imagenes/logoBanner.png"
+                alt="Logo A&E"
+                width="300"
+                class="d-inline-block align-text"
+              />
+              <span class="fs-3">Financial Consultant</span>
+            </div>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a
+                  class="nav-link active fs-5"
+                  aria-current="page"
+                  href="../index.html"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active fs-5"
+                  aria-current="page"
+                  href="./prestamos.html"
+                  >Simulador de prestamos</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active fs-5"
+                  aria-current="page"
+                  href="./criptomonedas.html"
+                  >Criptomonedas</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="compraCripto">
+        <h2>Deseas comprar Criptos?</h2>
+        <p>
+          Calculá ya cuanto te costaria comprar algunas de las criptos con las
+          que trabajamos.
+        </p>
+        <button id="btnCalculadora">Calculadora de Criptomonedas</button>
+      </div>
+      <div id="calculadoraCripto" style="display: none">
+        <input
+          type="number"
+          id="valorCambiar"
+          placeholder="Ingresa el valor a cambiar en USD"
+        />
+        <select id="criptosParaCalcular" name="criptosParaCalcular">
+          <option value="" disabled selected>
+            Seleccione la cripto a calcular
+          </option>
+          <option value="bitcoin">Bitcoin (BTC)</option>
+          <option value="ethereum">Ethereum (ETH)</option>
+          <option value="tether">Tether (USDT)</option>
+          <option value="binance-coin">Binance Coin (BNB)</option>
+          <option value="solana">Solana (SOL)</option>
+          <option value="usd-coin">USD Coin (USDC)</option>
+          <option value="dogecoin">Dogecoin (DOGE)</option>
+        </select>
+        <button id="btnCalcular">Calcular</button>
+        <div id="resultadoCalculadora"></div>
+      </div>
+
+      <div id="crypto-container">
+        <div class="crypto-card">
+          <img
+            src="../imagenes/criptomonedas/dogecoin.png"
+            alt="Dogecoin logo"
+          />
+          <p>Dogecoin (DOGE):</p>
+          <span class="price" id="dogecoin">Cargando...</span>
+        </div>
+
+        <div class="crypto-card">
+          <img src="../imagenes/criptomonedas/solana.png" alt="Solana logo" />
+          <p>Solana (SOL):</p>
+          <span class="price" id="solana">Cargando...</span>
+        </div>
+
+        <div class="crypto-card">
+          <img src="../imagenes/criptomonedas/tether.png" alt="Tether logo" />
+          <p>Tether (USDT):</p>
+          <span class="price" id="tether">Cargando...</span>
+        </div>
+
+        <div class="crypto-card">
+          <img src="../imagenes/criptomonedas/bitcoin.png" alt="Bitcoin logo" />
+          <p>Bitcoin (BTC):</p>
+          <span class="price" id="bitcoin">Cargando...</span>
+        </div>
+
+        <div class="crypto-card">
+          <img
+            src="../imagenes/criptomonedas/ethereum.png"
+            alt="Ethereum logo"
+          />
+          <p>Ethereum (ETH):</p>
+          <span class="price" id="ethereum">Cargando...</span>
+        </div>
+
+        <div class="crypto-card">
+          <img
+            src="../imagenes/criptomonedas/bnb.png"
+            alt="Binance Coin logo"
+          />
+          <p>Binance Coin (BNB):</p>
+          <span class="price" id="binance-coin">Cargando...</span>
+        </div>
+
+        <div class="crypto-card">
+          <img src="../imagenes/criptomonedas/usdc.png" alt="USD Coin logo" />
+          <p>USD Coin (USDC):</p>
+          <span class="price" id="usd-coin">Cargando...</span>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/criptomonedas.js"></script>
+  </body>
+</html>
