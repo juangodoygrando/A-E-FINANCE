@@ -152,6 +152,15 @@ borrarPrestamos.addEventListener("click", (e) => {
   e.preventDefault();
   eliminarPrestamosGuardados();
   document.getElementById("resultado").innerHTML = "";
+  Toastify({
+    text: "Se borraron todos los prestamos guardados",
+    gravity: "top",
+    duration: 3000,
+    offset: { x: 30, y: 150 },
+    style: {
+      background: "#9b2f38",
+    },
+  }).showToast();
 });
 
 let crearPrestamo;
@@ -239,6 +248,17 @@ botonVerPrestamos.addEventListener("click", () => {
             </div>`;
 
       divResultado.innerHTML += prestamosCalculados;
+      Toastify({
+        text: "Bajo el formulario estan los prestamos guardados ↓",
+        gravity: "bottom",
+        duration: 3500,
+        offset: { x: 30, y: 150 },
+        style: {
+          background: "#9b2f38",
+        },
+        stopOnFocus: true,
+        position: "left",
+      }).showToast();
     });
   } else {
     alert("No hay préstamos guardados.");
