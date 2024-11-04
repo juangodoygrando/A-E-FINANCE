@@ -201,7 +201,7 @@ function nuevoPrestamo() {
 function mostrarResultado(crearPrestamo) {
   Swal.fire({
     html: `<div class="tituloResultadoSweetAlert">
-                     <h2>Estos son lso resultados de tu prestamo</h2>
+                     <h2>Estos son los resultados de tu prestamo</h2>
                      <h3>${crearPrestamo.nombre}</h3>
                    </div>
                    <div class="resultadoPrestamoSweetAlert">
@@ -249,7 +249,7 @@ botonVerPrestamos.addEventListener("click", () => {
 
       divResultado.innerHTML += prestamosCalculados;
       Toastify({
-        text: "Bajo el formulario estan los prestamos guardados ↓",
+        text: "Debajo del formulario estan los prestamos guardados ↓",
         gravity: "bottom",
         duration: 3500,
         offset: { x: 30, y: 150 },
